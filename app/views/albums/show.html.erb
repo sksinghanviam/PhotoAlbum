@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @album.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @album.text %>
+</p>
+<hr>
+<% if @album.try(:image).present? %>
+  <p>
+    <h3>Your uploaded images !</h3>
+        <%= image_tag @album.image %>     
+        <button>
+          <%= link_to 'Delete', delete_picture_album_path(@album), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </button>
+  </p>
+  <hr>
+<% end %>
+<button><%= link_to 'Edit', edit_album_path(@album) %></button>
+<button><%= link_to 'Back', albums_path %></button>
